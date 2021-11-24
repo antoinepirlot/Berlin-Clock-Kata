@@ -73,4 +73,13 @@
          }
          return $clock[1];
      }
- }?>
+
+     public function blocSecond($second){
+         if($second % 2 == 0)
+             $clock[0] = true;
+         else
+             $clock[0] = false;
+
+         return $clock[0];
+     }
+ }
