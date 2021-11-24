@@ -47,4 +47,20 @@
         return $clock[4];
      }
 
+     public function bloc1hour($hour){
+         $clock[3] = array(4);
+
+         for($i = 0 ; $i < 4; $i++){
+             if($i <= $hour%5-1){
+                 $clock[3][$i] = true;
+             }
+             else{
+                 $clock[3][$i] = false;
+             }
+         }
+         return $clock[3];
+     }
+
+
+
  }?>
