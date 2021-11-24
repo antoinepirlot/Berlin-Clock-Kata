@@ -61,6 +61,16 @@
          return $clock[3];
      }
 
+     public function bloc5Hours($hour){
+         $clock[2] = array(4);
 
-
+         for($i = 0; $i < 4; $i++){
+             if($hour >= 5){
+                 $clock[2][$i] = true;
+                 $hour -= 5;
+             }else
+                 $clock[2][$i] = false;
+         }
+         return $clock[2];
+     }
  }?>

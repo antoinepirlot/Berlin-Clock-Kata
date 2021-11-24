@@ -65,4 +65,26 @@ class ClockTest extends TestCase{
         //AssertEquals
         $this->assertEquals([false,false,false,false],$actual);
     }
+
+    public function testBloc5Hours1(){
+        //Arrange
+        $clock = new Clock();
+
+        //Act
+        $actual = $clock->bloc5hours(4);
+
+        //AssertEquals
+        $this->assertEquals([false, false, false, false], $actual);
+    }
+
+    public function testBloc5Hours2(){
+        //Arrange
+        $clock = new Clock();
+
+        //Act
+        $actual = $clock->bloc5hours(18);
+
+        //AssertEquals
+        $this->assertEquals([true, true, true, false], $actual);
+    }
 }
