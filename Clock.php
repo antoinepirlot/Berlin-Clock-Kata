@@ -20,57 +20,57 @@
      }
 
      public function bloc1minute($minute){
-         $clock[5] = array(4);
+         $clock[4] = array(4);
 
          for($i = 0 ; $i < 4; $i++){
              if($i <= $minute%5-1){
-                 $clock[5][$i] = true;
+                 $clock[4][$i] = true;
              }
              else{
-                 $clock[5][$i] = false;
+                 $clock[4][$i] = false;
              }
          }
-         return $clock[5];
+         return $clock[4];
      }
 
      public function bloc5minutes($minute){
-        $clock[4] = array(11);
+        $clock[3] = array(11);
 
         for($i = 0; $i < 11; $i++){
             if($minute >= 5){
-                $clock[4][$i] = true;
+                $clock[3][$i] = true;
                 $minute -= 5;
             }else
-                $clock[4][$i] = false;
+                $clock[3][$i] = false;
 
         }
-        return $clock[4];
+        return $clock[3];
      }
 
      public function bloc1hour($hour){
-         $clock[3] = array(4);
+         $clock[2] = array(4);
 
          for($i = 0 ; $i < 4; $i++){
              if($i <= $hour%5-1){
-                 $clock[3][$i] = true;
+                 $clock[2][$i] = true;
              }
              else{
-                 $clock[3][$i] = false;
+                 $clock[2][$i] = false;
              }
          }
-         return $clock[3];
+         return $clock[2];
      }
 
      public function bloc5Hours($hour){
-         $clock[2] = array(4);
+         $clock[1] = array(4);
 
          for($i = 0; $i < 4; $i++){
              if($hour >= 5){
-                 $clock[2][$i] = true;
+                 $clock[1][$i] = true;
                  $hour -= 5;
              }else
-                 $clock[2][$i] = false;
+                 $clock[1][$i] = false;
          }
-         return $clock[2];
+         return $clock[1];
      }
  }?>
