@@ -33,4 +33,18 @@
          return $clock[5];
      }
 
+     public function bloc5minutes($minute){
+        $clock[4] = array(11);
+
+        for($i = 0; $i < 11; $i++){
+            if($minute >= 5){
+                $clock[4][$i] = true;
+                $minute -= 5;
+            }else
+                $clock[4][$i] = false;
+
+        }
+        return $clock[4];
+     }
+
  }?>
