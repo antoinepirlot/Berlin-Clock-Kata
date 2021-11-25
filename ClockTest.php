@@ -2,6 +2,7 @@
     use PHPUnit\Framework\TestCase;
     require 'Clock.php';
 
+
 class ClockTest extends TestCase{
 
     public function testBloc1minute1(){
@@ -10,7 +11,7 @@ class ClockTest extends TestCase{
         //act
         $actual = $Clock->bloc1minute(8);
         //assertEquals
-        $this->assertEquals(([true,true,true,false]),$actual);
+        $this->assertEquals(("yyyn"),$actual);
     }
 
     public function testBloc1minute2(){
@@ -19,7 +20,7 @@ class ClockTest extends TestCase{
         //act
         $actual = $Clock->bloc1minute(0);
         //assertEquals
-        $this->assertEquals(([false,false,false,false]),$actual);
+        $this->assertEquals(("nnnn"),$actual);
     }
 
     public function testBloc5minutes1(){
@@ -30,7 +31,7 @@ class ClockTest extends TestCase{
         $actual = $clock->bloc5minutes(3);
 
         //AssertEquals
-        $this->assertEquals([false, false, false, false, false, false, false, false, false, false, false], $actual);
+        $this->assertEquals("nnnnnnnnnnn", $actual);
     }
 
     public function testBloc5minutes2(){
@@ -41,7 +42,7 @@ class ClockTest extends TestCase{
         $actual = $clock->bloc5minutes(25);
 
         //AssertEquals
-        $this->assertEquals([true, true, true, true, true, false, false, false, false, false, false], $actual);
+        $this->assertEquals("yyyyynnnnnn", $actual);
     }
 
     public function testBloc1hour1(){
@@ -52,7 +53,7 @@ class ClockTest extends TestCase{
         $actual = $clock->bloc1hour(2);
 
         //AssertEquals
-        $this->assertEquals([true,true,false,false],$actual);
+        $this->assertEquals("yynn",$actual);
     }
 
     public function testBloc1hour2(){
@@ -63,7 +64,7 @@ class ClockTest extends TestCase{
         $actual = $clock->bloc1hour(5);
 
         //AssertEquals
-        $this->assertEquals([false,false,false,false],$actual);
+        $this->assertEquals("nnnn",$actual);
     }
 
     public function testBloc5Hours1(){
@@ -74,7 +75,7 @@ class ClockTest extends TestCase{
         $actual = $clock->bloc5hours(4);
 
         //AssertEquals
-        $this->assertEquals([false, false, false, false], $actual);
+        $this->assertEquals("nnnn", $actual);
     }
 
     public function testBloc5Hours2(){
@@ -85,7 +86,7 @@ class ClockTest extends TestCase{
         $actual = $clock->bloc5hours(18);
 
         //AssertEquals
-        $this->assertEquals([true, true, true, false], $actual);
+        $this->assertEquals("yyyn", $actual);
     }
 
     public function testBlocSecond1(){
@@ -96,7 +97,7 @@ class ClockTest extends TestCase{
         $actual = $clock->blocSecond(0);
 
         //AssertEquals
-        $this->assertEquals(true, $actual);
+        $this->assertEquals("y", $actual);
     }
 
     public function testBlocSecond2(){
@@ -107,7 +108,7 @@ class ClockTest extends TestCase{
         $actual = $clock->blocSecond(1);
 
         //AssertEquals
-        $this->assertEquals(false, $actual);
+        $this->assertEquals("n", $actual);
     }
 
     public function testBlocSecond3(){
@@ -118,6 +119,19 @@ class ClockTest extends TestCase{
         $actual = $clock->blocSecond(58);
 
         //AssertEquals
-        $this->assertEquals(true, $actual);
+        $this->assertEquals("y", $actual);
     }
+
+    public function testAll(){
+        //Arrange
+        $clock = new Clock();
+        //Act
+        $actual = $clock->all("11:11:11");
+        //AssertEquals
+        $this->assertEquals("n",$actual[0]);
+        $this->assertEquals("yynn",$actual[1]);
+        $this->assertEquals("ynnn",$actual[2]);
+        $this->assertEquals("yynnnnnnnnn",$actual[3]);
+        $this->assertEquals("ynnn",$actual[4]);
+        }
 }

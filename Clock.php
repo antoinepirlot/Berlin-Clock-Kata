@@ -20,66 +20,81 @@
      }
 
      public function bloc1minute($minute){
-         $clock[4] = array(4);
+         $this->clock[4] = '';
 
          for($i = 0 ; $i < 4; $i++){
              if($i <= $minute%5-1){
-                 $clock[4][$i] = true;
+                 $this->clock[4].="y";
              }
              else{
-                 $clock[4][$i] = false;
+                 $this->clock[4].="n";
              }
          }
-         return $clock[4];
+         return $this->clock[4];
      }
 
      public function bloc5minutes($minute){
-        $clock[3] = array(11);
+        $this->clock[3] = '';
 
         for($i = 0; $i < 11; $i++){
             if($minute >= 5){
-                $clock[3][$i] = true;
+                $this->clock[3].='y';
                 $minute -= 5;
             }else
-                $clock[3][$i] = false;
+                $this->clock[3].='n';
 
         }
-        return $clock[3];
+        return $this->clock[3];
      }
 
      public function bloc1hour($hour){
-         $clock[2] = array(4);
+         $this->clock[2] = '';
 
          for($i = 0 ; $i < 4; $i++){
              if($i <= $hour%5-1){
-                 $clock[2][$i] = true;
+                 $this->clock[2].='y';
              }
              else{
-                 $clock[2][$i] = false;
+                 $this->clock[2].='n';
              }
          }
-         return $clock[2];
+         return $this->clock[2];
      }
 
      public function bloc5Hours($hour){
-         $clock[1] = array(4);
+         $this->clock[1] = '';
 
          for($i = 0; $i < 4; $i++){
              if($hour >= 5){
-                 $clock[1][$i] = true;
+                 $this->clock[1].='y';
                  $hour -= 5;
              }else
-                 $clock[1][$i] = false;
+                 $this->clock[1].='n';
          }
-         return $clock[1];
+         return $this->clock[1];
      }
 
      public function blocSecond($second){
+         $this->clock[0]='';
          if($second % 2 == 0)
-             $clock[0] = true;
+             $this->clock[0].='y';
          else
-             $clock[0] = false;
+             $this->clock[0].='n';
 
-         return $clock[0];
+         return $this->clock[0];
+     }
+
+     public function all($date){
+         $this->date = $date;
+         $this->minute = substr($this->date,-5,2);
+         $this->hour = substr($this->date,-8,2);
+         $this->second = substr($this->date,-2,2);
+         $this->bloc1hour($this->hour);
+         $this->bloc5hours($this->hour);
+         $this->bloc1minute($this->minute);
+         $this->bloc5minutes($this->minute);
+         $this->blocSecond($this->second);
+
+         return $this->clock;
      }
  }
